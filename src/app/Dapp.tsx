@@ -103,7 +103,7 @@ export default function Dapp() {
       <Grid sx={{ padding: '0px 18px', mt: 9 }}>
         <Typography sx={{ color: '#000' }} >ZkSync Dapps</Typography>
         <Grid sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: "space-between" }}>
-          {filteredData?.length ? filteredData?.map((val, i) => (
+          {filteredData?.length ? filteredData?.map((val:any, i:any) => (
             <Card key={i} sx={{ width: { xs: '100%', md: '15%' }, mt: 2, padding: '15px 50px' }}
             >
               <Grid sx={{display:'flex',justifyContent:'space-between',alignContent: 'center', alignItems: 'center'}}>
