@@ -58,6 +58,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Dapp() {
+  const [searchValue, setSerachValue] = React.useState("")
+
+  const filteredData = searchValue
+  ? !!Zkdata?.length && Zkdata?.filter(item =>
+      item?.name.toLowerCase().includes(searchValue.toLowerCase())
+  )
+  : Zkdata;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ background: '#0380fc' }} position="fixed">
@@ -85,6 +93,8 @@ export default function Dapp() {
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
+              value={searchValue}
+              onChange={(e)=>setSerachValue(e.target.value)}
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
@@ -93,8 +103,8 @@ export default function Dapp() {
       <Grid sx={{ padding: '0px 18px', mt: 9 }}>
         <Typography sx={{ color: '#000' }} >ZkSync Dapps</Typography>
         <Grid sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: "space-between" }}>
-          {Zkdata?.map((val, i) => (
-            <Card key={i} sx={{ cursor: 'pointer', width: { xs: '100%', md: '15%' }, mt: 2, padding: '15px 50px' }} onClick={() => window.open(val.link)}
+          {filteredData?.length ? filteredData?.map((val, i) => (
+            <Card key={i} sx={{ width: { xs: '100%', md: '15%' }, mt: 2, padding: '15px 50px' }}
             >
               <Grid sx={{display:'flex',justifyContent:'space-between',alignContent: 'center', alignItems: 'center'}}>
                 <Grid sx={{ display: 'flex', alignContent: 'center', alignItems: 'center', gap: 1 }}>
@@ -171,14 +181,15 @@ export default function Dapp() {
                   color="text.secondary"
                   sx={{
                     opacity: 0.7,
-                    display: 'flex'
+                    display: 'flex',
+                    cursor:'pointer'
                   }}
                 >
                   <ArrowForwardTwoToneIcon />
                 </Typography>
               </Grid>
             </Card>
-          ))}
+          )):<Typography variant='h4' textAlign='center' >No Result Found!</Typography>}
         </Grid>
       </Grid>
     </Box>
