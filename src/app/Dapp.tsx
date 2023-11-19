@@ -60,7 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Dapp() {
   const [searchValue, setSerachValue] = React.useState("")
 
-  const filteredData = searchValue
+  const filteredData:any = searchValue
   ? !!Zkdata?.length && Zkdata?.filter(item =>
       item?.name.toLowerCase().includes(searchValue.toLowerCase())
   )
