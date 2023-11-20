@@ -37,6 +37,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
+  color: '#1976d2',
   justifyContent: 'center',
 }));
 
@@ -67,8 +68,8 @@ export default function Dapp() {
   : Zkdata;
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{ background: '#0380fc' }} position="fixed">
+    <Box sx={{ flexGrow: 1,mb:2 }}>
+      <AppBar sx={{ background: '#242526' }} position="fixed">
         <Toolbar>
           {/* <IconButton
             size="large"
@@ -101,10 +102,10 @@ export default function Dapp() {
         </Toolbar>
       </AppBar>
       <Grid sx={{ padding: '0px 18px', mt: 9 }}>
-        <Typography sx={{ color: '#000' }} >ZkSync Dapps</Typography>
+        <Typography sx={{ color: '#fff' }} >ZkSync Dapps</Typography>
         <Grid sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: "space-between" }}>
           {filteredData?.length ? filteredData?.map((val:any, i:any) => (
-            <Card key={i} sx={{ width: { xs: '100%', md: '15%' }, mt: 2, padding: '15px 50px' }}
+            <Card key={i} sx={{ width: { xs: '100%', md: '15%' }, mt: 2, padding: '15px 50px',background:'#242526' }}
             >
               <Grid sx={{display:'flex',justifyContent:'space-between',alignContent: 'center', alignItems: 'center'}}>
                 <Grid sx={{ display: 'flex', alignContent: 'center', alignItems: 'center', gap: 1 }}>
@@ -127,6 +128,7 @@ export default function Dapp() {
                   </Avatar>
                   <Typography
                     gutterBottom
+                    color="#fff"
                     variant="subtitle2"
                     sx={{
                       fontSize: 16
@@ -185,11 +187,11 @@ export default function Dapp() {
                     cursor:'pointer'
                   }}
                 >
-                  <ArrowForwardTwoToneIcon />
+                  <ArrowForwardTwoToneIcon color='primary' />
                 </Typography>
               </Grid>
             </Card>
-          )):<Typography variant='h4' textAlign='center' >No Result Found!</Typography>}
+          )):<Typography variant='h4' textAlign='center' color="#fff">No Result Found!</Typography>}
         </Grid>
       </Grid>
     </Box>
